@@ -1,0 +1,46 @@
+
+<h1>Welcome to the Glider Club Reservation System</h1>
+
+<div class="date-picker">
+  <%= form_tag({ controller: 'home', action: 'index' }, method: 'get', id: 'date-form') do %>
+    <%= label_tag :datepicker, 'Select a Date:' %>
+    <%= date_field_tag :datepicker, @selected_date || Date.today, id: 'datepicker' %>
+    <%= submit_tag 'Go' %>
+  <% end %>
+</div>
+
+<h2>Day Schedules for <%= @selected_date.strftime('%m/%d/%Y') %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <% @assets.each do |asset| %>
+        <th>
+          <%= asset.name %>
+          <% Rails.logger.info "Here's the selected date" %>
+          <% Rails.logger.info @selected_date %>
+          <%= link_to 'Reserve', modify_asset_day_schedule_path(asset.id, date: @selected_date), class: 'reserve-button' %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @time_slots.each do |time_slot| %>
+      <tr>
+        <td><%= time_slot %></td>
+        <% @assets.each do |asset| %>
+          <td>
+            <% day_schedule = @day_schedules.find { |ds| ds.asset_id == asset.id } %>
+            <% if day_schedule %>
+              <% reservation = day_schedule.reservations.find { |r| r.time_slot == time_slot } %>
+              <%= reservation ? reservation.description : '-' %>
+            <% else %>
+              -
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

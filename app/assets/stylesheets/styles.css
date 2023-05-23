@@ -1,0 +1,21 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th,
+  td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  
+  th:first-child,
+  td:first-child {
+    background-color: lightblue;
+    width: 1%;
+    white-space: nowrap;
+  }
+  
+  th {
+    background-color: lightblue;
+  }
