@@ -1,6 +1,7 @@
 <h1>Edit Day Schedule for <%= @selected_date.strftime('%m/%d/%Y') %></h1>
 
 <%= form_with(model: @day_schedule, url: day_schedule_path(@day_schedule), method: :patch) do |form| %>
+  <%= form.hidden_field :selected_date, value: @selected_date %>
   <table>
     <thead>
       <tr>

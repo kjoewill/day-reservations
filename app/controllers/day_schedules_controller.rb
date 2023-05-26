@@ -26,9 +26,8 @@ class DaySchedulesController < ApplicationController
   end 
 
   def update
+    @selected_date = Date.parse(day_schedule_params[:selected_date])
     res_params = params[:day_schedule][:reservations]
-    puts "Here's the reservations hash:"
-    puts res_params
 
     # Iterate over the reservations hash
     res_params.each do |reservation_id, reservation_attributes|
@@ -41,7 +40,7 @@ class DaySchedulesController < ApplicationController
 
     # After updating the reservations.  
     #return to this and check/handle update errors
-    redirect_to root_path, notice: "Update completed successfully."
+    redirect_to root_path(datepicker: @selected_date)
     
   end
       
