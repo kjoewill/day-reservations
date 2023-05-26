@@ -1,0 +1,27 @@
+<h1>Day Schedule for <%= @selected_date.strftime('%m/%d/%Y') %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Asset</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @time_slots.each do |time_slot| %>
+      <tr>
+        <td><%= time_slot %></td>
+        <td>
+          <% if @day_schedule %>
+            <% reservation = @day_schedule.reservations.find { |r| r.time_slot == time_slot } %>
+            <%= reservation ? reservation.description : '-' %>
+          <% else %>
+            -
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Day Schedules', asset_day_schedules_path(@asset, @selected_date), class: 'btn btn-primary' %>

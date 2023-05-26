@@ -1,0 +1,34 @@
+<h1>Edit Day Schedule for <%= @selected_date.strftime('%m/%d/%Y') %></h1>
+
+<%= form_with(model: @day_schedule, url: day_schedule_path(@day_schedule), method: :patch) do |form| %>
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Asset</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @time_slots.each do |time_slot| %>
+        <tr>
+          <td><%= time_slot %></td>
+          <td>
+            <% reservation = @day_schedule.reservations.find { |r| r.time_slot == time_slot } %>
+            <% if reservation %>
+              <%= fields_for "day_schedule[reservations][]", reservation do |reservation_form| %>
+                <%= reservation_form.hidden_field :time_slot, value: time_slot %>
+                <%= reservation_form.text_field :description %>
+              <% end %>
+            <% else %>
+              -
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= form.submit 'Save' %>
+<% end %>
+
+<%= link_to 'Back to Day Schedules', asset_day_schedules_path(@asset, @selected_date), class: 'btn btn-primary' %>

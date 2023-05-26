@@ -1,12 +1,54 @@
 class DaySchedulesController < ApplicationController
-  def modify
+  
+  def show
     fail
-    @asset = Asset.find(params[:asset_id])
-    @selected_date = Date.parse(params[:date])
-    @day_schedule = DaySchedule.find_by(asset_id: params[:asset_id], day: @selected_date)
-
-    if @day_schedule.nil?
-      @day_schedule = DaySchedule.new(asset_id: params[:asset_id], day: @selected_date)
-    end
+    @asset = Asset.find(params[:id])
+    @selected_date = Date.parse(params[:selected_date])
+    @day_schedule = DaySchedule.find_or_create_by(asset_id: @asset.id, day: @selected_date)
+    @time_slots = Reservation::TIME_SLOTS
   end
+
+  def edit
+    fail
+    @time_slots = Reservation::TIME_SLOTS
+    @asset = Asset.find(params[:asset_id])
+    @selected_date = Date.parse(params[:selected_date])
+    @day_schedule = @asset.schedule_for_day(@selected_date)
+  end
+
+
+ def reserve
+    @time_slots = Reservation::TIME_SLOTS
+    @asset = Asset.find(params[:asset_id])
+    @selected_date = Date.parse(params[:selected_date])
+    @day_schedule = @asset.schedule_for_day(@selected_date)
+    render 'day_schedules/edit'
+  end 
+
+  def update
+    res_params = params[:day_schedule][:reservations]
+    puts "Here's the reservations hash:"
+    puts res_params
+
+    # Iterate over the reservations hash
+    res_params.each do |reservation_id, reservation_attributes|
+      # Find the reservation by ID
+      reservation = Reservation.find(reservation_id)
+
+      # Update the description attribute
+      reservation.update(description: reservation_attributes[:description])
+    end
+
+    # After updating the reservations.  
+    #return to this and check/handle update errors
+    redirect_to root_path, notice: "Update completed successfully."
+    
+  end
+      
+  private
+  
+  def day_schedule_params
+    params.require(:day_schedule).permit!
+  end
+
 end

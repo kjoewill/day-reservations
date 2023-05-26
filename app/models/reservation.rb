@@ -4,7 +4,7 @@ class Reservation < ApplicationRecord
   belongs_to :day_schedule
   
   validates :time_slot, inclusion: { in: TIME_SLOTS }
-  validates :description, presence: true
+  validates :description, presence: true, allow_blank: true
   validates :day_schedule, presence: true
   # additional validations and methods...
 end

@@ -18,9 +18,12 @@
       <% @assets.each do |asset| %>
         <th>
           <%= asset.name %>
-          <% Rails.logger.info "Here's the selected date" %>
+          <% Rails.logger.info "Here's the selected date:" %>
           <% Rails.logger.info @selected_date %>
-          <%= link_to 'Reserve', modify_asset_day_schedule_path(asset.id, date: @selected_date), class: 'reserve-button' %>
+          <% Rails.logger.info "@selected_date is a Date: #{@selected_date.is_a?(Date)}" %>
+          <% Rails.logger.info "Here's the asset.id:" %>
+          <% Rails.logger.info asset.id %>
+          <%= link_to 'Reserve', reserve_asset_day_schedules_path(asset_id: asset.id, selected_date: @selected_date), class: 'reserve-button' %>
         </th>
       <% end %>
     </tr>
@@ -31,7 +34,7 @@
         <td><%= time_slot %></td>
         <% @assets.each do |asset| %>
           <td>
-            <% day_schedule = @day_schedules.find { |ds| ds.asset_id == asset.id } %>
+            <% day_schedule = asset.day_schedules.find_by(asset_id: asset.id, day: @selected_date) %>
             <% if day_schedule %>
               <% reservation = day_schedule.reservations.find { |r| r.time_slot == time_slot } %>
               <%= reservation ? reservation.description : '-' %>
