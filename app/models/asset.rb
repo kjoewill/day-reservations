@@ -2,6 +2,7 @@ class Asset < ApplicationRecord
   has_many :day_schedules
 
   validates :name, presence: true, uniqueness: true
+  validates :sort_order, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   # any other logic or validations...
 
   def schedule_for_day(date)

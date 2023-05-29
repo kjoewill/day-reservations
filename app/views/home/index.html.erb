@@ -16,11 +16,6 @@
       <% @assets.each do |asset| %>
         <th>
           <%= asset.name %>
-          <% Rails.logger.info "Here's the selected date:" %>
-          <% Rails.logger.info @selected_date %>
-          <% Rails.logger.info "@selected_date is a Date: #{@selected_date.is_a?(Date)}" %>
-          <% Rails.logger.info "Here's the asset.id:" %>
-          <% Rails.logger.info asset.id %>
           <%= link_to 'Reserve', reserve_asset_day_schedules_path(asset_id: asset.id, selected_date: @selected_date), class: 'reserve-button' %>
         </th>
       <% end %>
