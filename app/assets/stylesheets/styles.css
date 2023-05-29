@@ -19,3 +19,27 @@ table {
   th {
     background-color: lightblue;
   }
+
+  .header {
+    background-color: skyblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Adjust the height as needed */
+  }
+  
+  .header-text {
+    font-size: 36px; /* Adjust the font size as needed */
+  }
+
+  .footer {
+    background-color: skyblue;
+    padding: 20px; /* Adjust the padding as needed */
+    text-align: center;
+    margin-top: 20px; /* Add margin-top for white space */
+  }
+  
+  .footer-text {
+    font-size: 14px; /* Adjust the font size as needed */
+    color: white; /* Adjust the color as needed */
+  }

@@ -1,5 +1,4 @@
-
-<h1>Welcome to the Glider Club Reservation System</h1>
+<h2>Day Schedules for <%= @selected_date.strftime('%m/%d/%Y') %></h2>
 
 <div class="date-picker">
   <%= form_tag({ controller: 'home', action: 'index' }, method: 'get', id: 'date-form') do %>
@@ -9,7 +8,6 @@
   <% end %>
 </div>
 
-<h2>Day Schedules for <%= @selected_date.strftime('%m/%d/%Y') %></h2>
 
 <table>
   <thead>
