@@ -8,7 +8,6 @@
   <% end %>
 </div>
 
-
 <table>
   <thead>
     <tr>
@@ -16,7 +15,7 @@
       <% @assets.each do |asset| %>
         <th>
           <%= asset.name %>
-          <%= link_to 'Reserve', reserve_asset_day_schedules_path(asset_id: asset.id, selected_date: @selected_date), class: 'reserve-button' %>
+          <%= link_to 'Reserve', reserve_asset_day_schedules_path(asset, selected_date: @selected_date), class: 'reserve-button' %>
         </th>
       <% end %>
     </tr>
@@ -27,7 +26,7 @@
         <td><%= time_slot %></td>
         <% @assets.each do |asset| %>
           <td>
-            <% day_schedule = asset.day_schedules.find_by(asset_id: asset.id, day: @selected_date) %>
+            <% day_schedule = asset.day_schedules.find_by(day: @selected_date) %>
             <% if day_schedule %>
               <% reservation = day_schedule.reservations.find { |r| r.time_slot == time_slot } %>
               <%= reservation ? reservation.description : '-' %>
