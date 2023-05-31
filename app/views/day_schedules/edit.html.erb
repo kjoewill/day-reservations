@@ -15,14 +15,10 @@
           <td><%= time_slot %></td>
           <td>
             <% reservation = @day_schedule.reservations.find { |r| r.time_slot == time_slot } %>
-            <% if reservation %>
               <%= fields_for "day_schedule[reservations][]", reservation do |reservation_form| %>
                 <%= reservation_form.hidden_field :time_slot, value: time_slot %>
                 <%= reservation_form.text_field :description %>
               <% end %>
-            <% else %>
-              -
-            <% end %>
           </td>
         </tr>
       <% end %>

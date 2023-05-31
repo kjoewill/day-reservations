@@ -11,7 +11,7 @@ class HomesTest < ApplicationSystemTestCase
     visit root_path
     fill_in "datepicker", with: "09-27-2025"
     click_button "Go"
-    assert_text "Day Schedules for 09/27/2025"
+    assert_text "Reservations for 09/27/2025"
   end
 
   test "Select new date 9/27/2025 and check results" do
