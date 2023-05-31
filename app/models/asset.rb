@@ -19,13 +19,7 @@ class Asset < ApplicationRecord
 
   def create_empty_reservations(day_schedule)
     Reservation::TIME_SLOTS.each do |time_slot|
-      reservation = day_schedule.reservations.build(time_slot: time_slot, description: '')
-  
-      if reservation.save
-        Rails.logger.info "Reservation created successfully: #{reservation.inspect}"
-      else
-        Rails.logger.error "Error creating reservation: #{reservation.errors.full_messages}"
-      end
+      day_schedule.reservations.create(time_slot: time_slot, description: '')
     end
   end
   
