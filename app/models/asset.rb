@@ -15,6 +15,13 @@ class Asset < ApplicationRecord
     day_schedule
   end
 
+  def reservations_for_day(selected_date)
+    day_schedule = day_schedules.find_by(day: selected_date)
+    return [] unless day_schedule
+
+    day_schedule.reservations
+  end
+
   private
 
   def create_empty_reservations(day_schedule)

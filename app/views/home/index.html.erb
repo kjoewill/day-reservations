@@ -21,21 +21,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @time_slots.each do |time_slot| %>
-      <tr>
-        <td><%= time_slot %></td>
-        <% @assets.each do |asset| %>
-          <td>
-            <% day_schedule = asset.day_schedules.find_by(day: @selected_date) %>
-            <% if day_schedule %>
-              <% reservation = day_schedule.reservations.find { |r| r.time_slot == time_slot } %>
-              <%= reservation ? reservation.description : '-' %>
-            <% else %>
-              -
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
+ <% @time_slots.each do |time_slot| %>
+  <tr>
+    <td><%= time_slot %></td>
+    <% @assets.each do |asset| %>
+      <td>
+        <% reservations = asset.reservations_for_day(@selected_date) %>
+        <%= reservations.any? ? reservations.find_by(time_slot: time_slot)&.description : '-' %>
+      </td>
     <% end %>
+  </tr>
+<% end %>
   </tbody>
 </table>
