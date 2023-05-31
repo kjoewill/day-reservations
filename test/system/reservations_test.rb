@@ -31,7 +31,7 @@ class ReservationsTest < ApplicationSystemTestCase
       assert_equal "", cell_text
     end
 
-    take_screenshot
+    #take_screenshot
   end
 
 end
