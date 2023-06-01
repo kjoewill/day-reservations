@@ -16,7 +16,7 @@
         <tr>
           <td><%= time_slot %></td>
           <td>
-            <% reservation = @asset.reservations_for_day(@selected_date)&.find_by(time_slot: time_slot) %>
+            <% reservation = @day_schedule.reservations.find_by(time_slot: time_slot) %>
             <input type="hidden" name="reservations[<%= time_slot %>][id]" value="<%= reservation&.id %>">
             <input type="text" name="reservations[<%= time_slot %>][description]" value="<%= reservation&.description %>">
           </td>
