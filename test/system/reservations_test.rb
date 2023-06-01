@@ -14,8 +14,8 @@ class ReservationsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "High Flights Soaring", wait: 5
 
     # CSS selector to find the first input field
-    input_field = all("input[name^='day_schedule[reservations]'][name$='[description]']").first
-    input_field.fill_in(with: '08:30, G2, 09-27-2100')
+    text_field = all('input[type="text"]').first
+    text_field.fill_in(with: '08:30, G2, 09-27-2100')
 
     within('form') do
       click_button 'Save'

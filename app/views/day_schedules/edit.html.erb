@@ -1,7 +1,9 @@
 <h1>Editing Schedule</h1>
 <h1><%= @selected_date.strftime('%m/%d/%Y') %></h1>
-<%= form_with(model: @day_schedule, url: day_schedule_path(@day_schedule), method: :patch) do |form| %>
-  <%= form.hidden_field :selected_date, value: @selected_date %>
+
+<form action="<%= day_schedule_path(@day_schedule) %>" method="post">
+  <%= hidden_field_tag :_method, :patch %>
+  <%= hidden_field_tag :selected_date, @selected_date %>
   <table>
     <thead>
       <tr>
@@ -14,18 +16,17 @@
         <tr>
           <td><%= time_slot %></td>
           <td>
-            <% reservation = @day_schedule.reservations.find { |r| r.time_slot == time_slot } %>
-              <%= fields_for "day_schedule[reservations][]", reservation do |reservation_form| %>
-                <%= reservation_form.hidden_field :time_slot, value: time_slot %>
-                <%= reservation_form.text_field :description %>
-              <% end %>
+            <% reservation = @asset.reservations_for_day(@selected_date)&.find_by(time_slot: time_slot) %>
+            <input type="hidden" name="reservations[<%= time_slot %>][id]" value="<%= reservation&.id %>">
+            <input type="text" name="reservations[<%= time_slot %>][description]" value="<%= reservation&.description %>">
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
-  <%= form.submit 'Save' %>
-<% end %>
+  <input type="hidden" name="selected_date" value="<%= @selected_date %>">
+  <input type="submit" value="Save">
+</form>
 
-<%= link_to 'Back Home', root_path(datepicker: @selected_date), class: 'btn btn-primary' %>
+<a href="<%= root_path(datepicker: @selected_date) %>" class="btn btn-primary">Back Home</a>
