@@ -20,7 +20,7 @@ class HomesTest < ApplicationSystemTestCase
     click_button "Go"
 
     #Using this as a delay to avoid testing contents before they have a chance to load
-    assert_selector "h1", text: "High Flights Soaring", wait: 5
+    assert_selector "h1", text: "High Flights Soaring", wait: 10
 
     #take_screenshot
 
