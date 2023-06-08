@@ -22,7 +22,7 @@ class HomesTest < ApplicationSystemTestCase
     #Using this as a delay to avoid testing contents before they have a chance to load
     assert_selector "h1", text: "High Flights Soaring", wait: 10
 
-    #take_screenshot
+    take_screenshot
 
     # Assert that the specific cell contains the expected text
     within "table" do
