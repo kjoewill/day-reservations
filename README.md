@@ -38,4 +38,4 @@ Things you may want to cover:
 4. git remote add origin https://github.com/kjoewill/day-reservations
 5. git fetch origin
 6. git checkout main 
-7. bundele install
+7. bundle install
