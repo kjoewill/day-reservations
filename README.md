@@ -21,7 +21,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ......
+* .......
 
 ## Setting up a test environment
 1. Create a new folder
