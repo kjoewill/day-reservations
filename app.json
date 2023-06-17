@@ -5,7 +5,10 @@
 
     "environments": {
         "test": {
-          "addons": ["heroku-postgresql:in-dyno"]
+          "addons": ["heroku-postgresql:in-dyno"],
+          "scripts": {
+            "test": "bin/rails test:system"
+          }
         }
       }
 }
