@@ -18,6 +18,8 @@ class ActiveSupport::TestCase
 
   puts "Chrome binary location: #{chrome_bin}"
   puts "Chrome options: #{chrome_opts}"
+  puts "GOOGLE_CHROME_BIN: #{ENV.fetch('GOOGLE_CHROME_BIN', '')}"
+  puts "GOOGLE_CHROME_SHIM: #{ENV.fetch('GOOGLE_CHROME_SHIM', '')}"
 
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(
