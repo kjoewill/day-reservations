@@ -24,6 +24,8 @@ class ActiveSupport::TestCase
 
   opts = Selenium::WebDriver::Chrome::Options.new
 
+  Selenium::WebDriver::Chrome.path = binarychrome_bin if chrome_bin
+
   chrome_args = %w[--headless --no-sandbox --disable-gpu]
   chrome_args.each { |arg| opts.add_argument(arg)  }
 
