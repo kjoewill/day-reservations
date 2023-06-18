@@ -16,8 +16,8 @@ class ActiveSupport::TestCase
   chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
   chrome_opts = chrome_bin ? { "chromeOptions" => { "binary" => chrome_bin } } : {}
 
-  Rails.logger.info("Chrome binary: #{chrome_bin}")
-  Rails.logger.info("Chrome options: #{chrome_opts.inspect}")
+  puts "Chrome binary location: #{chrome_bin}"
+  puts "Chrome options: #{chrome_opts}"
 
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(
