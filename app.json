@@ -1,8 +1,8 @@
 {
     "buildpacks": [
       { "url": "heroku/ruby" },
-      { "url": "heroku/google-chrome" },
-      { "url": "heroku/chromedriver" }
+      { "url": "heroku/chromedriver" },
+      { "url": "heroku/google-chrome" }
     ],
 
     "environments": {
