@@ -14,31 +14,20 @@ class ActiveSupport::TestCase
   #This code to provide correct path to the chrome library on heroku test environment
 
   puts "Kevin: Loading test_helper.rb..."
-  chrome_bin = ENV.fetch('GOOGLE_CHROME_BIN', nil)
-  chrome_opts = chrome_bin ? { "chromeOptions" => { "binary" => chrome_bin } } : {}
 
-  puts "Chrome binary location: #{chrome_bin}"
-  puts "Chrome options: #{chrome_opts}"
-  puts "GOOGLE_CHROME_BIN: #{ENV.fetch('GOOGLE_CHROME_BIN', '')}"
-  puts "GOOGLE_CHROME_SHIM: #{ENV.fetch('GOOGLE_CHROME_SHIM', '')}"
+  binary = ENV.fetch("GOOGLE_CHROME_BIN", nil)
 
-  opts = Selenium::WebDriver::Chrome::Options.new
+  Selenium::WebDriver::Chrome.path = binary if binary
 
-  Selenium::WebDriver::Chrome.path = chrome_bin if chrome_bin
-
-  chrome_args = %w[--headless --no-sandbox --disable-gpu]
-  chrome_args.each { |arg| opts.add_argument(arg)  }
-
-  Capybara.register_driver :chrome do |app|
-    Capybara::Selenium::Driver.new(
-      app,
-      browser: :chrome,
-      options: opts,
-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(chrome_opts)
-    )
+  Capybara.register_driver(:headless_chrome) do |app|
+    options = {
+      args: %w[headless no-sandbox disable-dev-shm-usage disable-gpu remote-debugging-port=9222],
+      binary: binary
+    }.compact_blank
+    
+    capabilities = Selenium::WebDriver::Chrome::Options.new(options)
+    Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: capabilities)
   end
-
-  Capybara.javascript_driver = :headless
   # End chrome lib path setup
 
 
