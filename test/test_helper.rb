@@ -21,15 +21,21 @@ class ActiveSupport::TestCase
   puts "GOOGLE_CHROME_BIN: #{ENV.fetch('GOOGLE_CHROME_BIN', '')}"
   puts "GOOGLE_CHROME_SHIM: #{ENV.fetch('GOOGLE_CHROME_SHIM', '')}"
 
+  opts = Selenium::WebDriver::Chrome::Options.new
+
+  chrome_args = %w[--headless --no-sandbox --disable-gpu]
+  chrome_args.each { |arg| opts.add_argument(arg)  }
+
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(
       app,
       browser: :chrome,
+      options: opts,
       desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(chrome_opts)
     )
   end
 
-  Capybara.javascript_driver = :chrome
+  Capybara.javascript_driver = :headless
   # End chrome lib path setup
 
 
