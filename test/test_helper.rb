@@ -12,11 +12,6 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 
   #This code to provide correct path to the chrome library on heroku test environment
-  puts "Kevin: Loading test_helper.rb..."
-  puts "GOOGLE_CHROME_BIN: #{ENV.fetch('GOOGLE_CHROME_BIN', '')}"
-  puts "GOOGLE_CHROME_SHIM: #{ENV.fetch('GOOGLE_CHROME_SHIM', '')}"
-  
-
   chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
 
   chrome_opts = chrome_bin ? { "chromeOptions" => { "binary" => chrome_bin } } : {}
@@ -34,8 +29,5 @@ class ActiveSupport::TestCase
     Selenium::WebDriver::Chrome.path = ENV['GOOGLE_CHROME_SHIM']
   end
   # End chrome lib path setup
-
-
-
 
 end
