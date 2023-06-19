@@ -30,7 +30,9 @@ class ActiveSupport::TestCase
   end
 
   Capybara.javascript_driver = :chrome
-  Selenium::WebDriver::Chrome.path = ENV.fetch('GOOGLE_CHROME_SHIM', '')
+  if ENV['GOOGLE_CHROME_SHIM']
+    Selenium::WebDriver::Chrome.path = ENV['GOOGLE_CHROME_SHIM']
+  end
   # End chrome lib path setup
 
 
