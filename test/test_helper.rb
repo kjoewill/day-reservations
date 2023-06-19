@@ -12,22 +12,21 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 
   #This code to provide correct path to the chrome library on heroku test environment
-
   puts "Kevin: Loading test_helper.rb..."
 
-  binary = ENV.fetch("GOOGLE_CHROME_BIN", nil)
+  chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
 
-  Selenium::WebDriver::Chrome.path = binary if binary
+  chrome_opts = chrome_bin ? { "chromeOptions" => { "binary" => chrome_bin } } : {}
 
-  Capybara.register_driver(:headless_chrome) do |app|
-    options = {
-      args: %w[headless no-sandbox disable-dev-shm-usage disable-gpu remote-debugging-port=9222],
-      binary: binary
-    }.compact_blank
-    
-    capabilities = Selenium::WebDriver::Chrome::Options.new(options)
-    Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: capabilities)
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :chrome,
+      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(chrome_opts)
+    )
   end
+
+  Capybara.javascript_driver = :chrome
   # End chrome lib path setup
 
 
