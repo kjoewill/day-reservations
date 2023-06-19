@@ -13,6 +13,9 @@ class ActiveSupport::TestCase
 
   #This code to provide correct path to the chrome library on heroku test environment
   puts "Kevin: Loading test_helper.rb..."
+  puts "GOOGLE_CHROME_BIN: #{ENV.fetch('GOOGLE_CHROME_BIN', '')}"
+  puts "GOOGLE_CHROME_SHIM: #{ENV.fetch('GOOGLE_CHROME_SHIM', '')}"
+  
 
   chrome_bin = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
 
