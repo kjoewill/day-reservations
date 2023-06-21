@@ -39,3 +39,12 @@ Things you may want to cover:
 5. git fetch origin
 6. git checkout main 
 7. bundle install
+
+## The current Pipleine flow
+1. Make a change in a local repository
+2. Test the change locally
+3. Push the change to GitHub 
+4. Ensure the GitHub CI Action successfully runs System Tests
+5. Ensure the Heroku pipeline (res-pipline "tests" tab) pulled the new version and succefully ran system tests
+6. Deploy the new version to the staging app in the pipeline and perform exploratory testing
+7. Push the "promote" button on the staging app representation to move the "slug" to production
