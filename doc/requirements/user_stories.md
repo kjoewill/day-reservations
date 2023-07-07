@@ -1,4 +1,5 @@
 # Day Reservations User Stories
+These are captured as "issues" on GitHub and named Story 1, Story 2, etc
 
 1. As a user I want the home page to initially open displaying the day schedule for all assets for today's date so that
 I can see the allocated time for each asset for today.
