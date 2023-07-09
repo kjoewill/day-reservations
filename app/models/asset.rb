@@ -4,6 +4,10 @@ class Asset < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :sort_order, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  def self.by_sort_order
+    order(:sort_order)
+  end
+  
   def schedule_for_day(date)
     day_schedule = day_schedules.find_or_create_by(day: date)
     if day_schedule.reservations.empty?

@@ -7,5 +7,4 @@ class LayoutsTest < ActionDispatch::IntegrationTest
     assert_select 'h1', "High Flights Soaring", 1
   end
 
-
 end
