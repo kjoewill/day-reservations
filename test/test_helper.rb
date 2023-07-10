@@ -1,11 +1,14 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require_relative '../db/seeds'
 
 class ActiveSupport::TestCase
-    # Configure the test strategy to use transactions
-    self.use_transactional_tests = true
-    
+  # Configure the test strategy to use transactions
+  #self.use_transactional_tests = true
+  
+
+
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
 
@@ -32,5 +35,19 @@ class ActiveSupport::TestCase
     Selenium::WebDriver::Chrome.path = ENV['GOOGLE_CHROME_SHIM']
   end
   # End chrome lib path setup
+
+  # Configure DatabaseCleaner
+  DatabaseCleaner.strategy = :transaction
+
+  # Clean the database before running tests
+  setup do
+    DatabaseCleaner.start
+  end
+
+  # Clean the database after running tests
+  teardown do
+    DatabaseCleaner.clean
+  end
+
 
 end
