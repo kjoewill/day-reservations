@@ -1,5 +1,5 @@
 class Asset < ApplicationRecord
-  has_many :day_schedules
+  has_many :day_schedules, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :sort_order, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }

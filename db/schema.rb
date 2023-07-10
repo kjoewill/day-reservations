@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_29_174320) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_10_220044) do
   create_table "assets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -35,6 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_29_174320) do
     t.index ["day_schedule_id"], name: "index_reservations_on_day_schedule_id"
   end
 
-  add_foreign_key "day_schedules", "assets"
-  add_foreign_key "reservations", "day_schedules"
+  add_foreign_key "day_schedules", "assets", on_delete: :cascade
+  add_foreign_key "reservations", "day_schedules", on_delete: :cascade
 end

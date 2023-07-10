@@ -7,7 +7,7 @@ class AssetsDeleteTest < ActiveSupport::TestCase
     assert_equal 4, assets.count
   end
 
-  test 'If an asset is deleted then there are four' do
+  test 'If an asset is deleted then there are three' do
     asset = Asset.all.first
     asset.destroy
     assert_equal 3, Asset.all.count
