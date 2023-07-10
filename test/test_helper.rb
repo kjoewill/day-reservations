@@ -3,6 +3,9 @@ require_relative "../config/environment"
 require "rails/test_help"
 
 class ActiveSupport::TestCase
+    # Configure the test strategy to use transactions
+    self.use_transactional_tests = true
+    
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
 
