@@ -2,7 +2,7 @@
 
 one:
   name: FancyGlider1
-  sort_order: 1
+  sort_order: 3
 
 two:
   name: FancyGlider2
@@ -10,4 +10,5 @@ two:
 
 three:
   name: FancyGlider3
-  sort_order: 3
+  sort_order: 1
+  
