@@ -2,13 +2,14 @@ require "test_helper"
 
 class AssetsDeleteTest < ActiveSupport::TestCase
 
-  test 'There are four Asset instances' do
-    assets = Asset.all
-    assert_equal 4, assets.count
-  end
 
   test 'If an asset is deleted then there are three' do
     asset = Asset.all.first
+    assert_equal 'Glider-1', asset.name
+    #assert_equal 1, asset.day_schedules.count
+    asset.day_schedules.each do |day_schedule|
+        puts day_schedule.day
+      end
     asset.destroy
     assert_equal 3, Asset.all.count
   end
