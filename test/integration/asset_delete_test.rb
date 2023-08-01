@@ -6,13 +6,14 @@ class AssetsDeleteTest < ActiveSupport::TestCase
   test 'If an asset is deleted then there are three' do
     asset = Asset.all.first
     assert_equal 'Glider-1', asset.name
-    #assert_equal 1, asset.day_schedules.count
+    assert_equal 1, asset.day_schedules.count
     asset.day_schedules.each do |day_schedule|
         puts day_schedule.day
       end
     asset.destroy
     assert_equal 3, Asset.all.count
   end
+
 
   test 'There are always four Asset instances at the begining of a test' do
     assets = Asset.all
@@ -27,5 +28,6 @@ class AssetsDeleteTest < ActiveSupport::TestCase
     # g2 = Asset.find_by(name: 'Glider-2')
     # assert_equal 1, g2.day_schedules.count
   end 
+
 
 end

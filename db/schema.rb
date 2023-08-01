@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_220044) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_29_192435) do
   create_table "assets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_220044) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["asset_id"], name: "index_day_schedules_on_asset_id"
+    t.index ["day", "asset_id"], name: "index_day_schedules_on_day_and_asset_id", unique: true
   end
 
   create_table "reservations", force: :cascade do |t|
