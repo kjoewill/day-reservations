@@ -1,7 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
-require_relative '../db/seeds'
+#require_relative '../db/seeds'
 
 class ActiveSupport::TestCase
   # Configure the test strategy to use transactions

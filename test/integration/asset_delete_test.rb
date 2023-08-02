@@ -1,7 +1,8 @@
 require "test_helper"
 
 class AssetsDeleteTest < ActiveSupport::TestCase
-
+  # Enable transactions for test methods
+  self.use_transactional_tests = true
 
   test 'If an asset is deleted then there are three' do
     asset = Asset.all.first
