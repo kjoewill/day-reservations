@@ -1,8 +1,15 @@
 require "test_helper"
+require_relative '../test_data_helper'
 
 class AssetsDeleteTest < ActiveSupport::TestCase
+  include TestDataHelper # Include TestDataHelper module
+
   # Enable transactions for test methods
   self.use_transactional_tests = true
+  
+  setup do
+    load_test_data # Load test data before each test
+  end
 
   test 'If an asset is deleted then there are three' do
     asset = Asset.all.first
