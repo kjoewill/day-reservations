@@ -33,8 +33,10 @@ class AssetsDeleteTest < ActiveSupport::TestCase
         puts asset.name
     end
 
-    # g2 = Asset.find_by(name: 'Glider-2')
-    # assert_equal 1, g2.day_schedules.count
+    g2 = Asset.find_by(name: 'Glider-2')
+    assert_equal 1, g2.day_schedules.count
+    assert_equal 6, g2.day_schedules.first.reservations.count
+
   end 
 
 
