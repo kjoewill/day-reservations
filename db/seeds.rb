@@ -64,16 +64,4 @@ if Rails.env.development? || Rails.env.test?
 
   Reservation.create(reservations)
 
-else
-   # Production seeds code
-  puts "Production asset creation should happen!!"
-  # Create assets
-  assets = [
-    { name: 'Production Glider-1', sort_order: 1 },
-    { name: 'Production Glider-2', sort_order: 2 },
-    { name: 'Production Glider-3', sort_order: 3 },
-    { name: 'Towplane Only', sort_order: 4 }
-  ]
-
-  Asset.create(assets)
 end
