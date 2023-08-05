@@ -39,19 +39,19 @@ module TestDataHelper
             { time_slot: '10:30', description: '10:30, G2, 09-27-25', day_schedule: g2_day_schedule },
             { time_slot: '11:00', description: '11:00, G2, 09-27-25', day_schedule: g2_day_schedule },
         
-            { time_slot: '08:30', description: '08:30, G2, 09-27-25', day_schedule: g3_day_schedule },
-            { time_slot: '09:00', description: '09:00, G2, 09-27-25', day_schedule: g3_day_schedule },
-            { time_slot: '09:30', description: '09:30, G2, 09-27-25', day_schedule: g3_day_schedule },
-            { time_slot: '10:00', description: '10:00, G2, 09-27-25', day_schedule: g3_day_schedule },
-            { time_slot: '10:30', description: '10:30, G2, 09-27-25', day_schedule: g3_day_schedule },
-            { time_slot: '11:00', description: '11:00, G2, 09-27-25', day_schedule: g3_day_schedule },
+            { time_slot: '08:30', description: '08:30, G3, 09-27-25', day_schedule: g3_day_schedule },
+            { time_slot: '09:00', description: '09:00, G3, 09-27-25', day_schedule: g3_day_schedule },
+            { time_slot: '09:30', description: '09:30, G3, 09-27-25', day_schedule: g3_day_schedule },
+            { time_slot: '10:00', description: '10:00, G3, 09-27-25', day_schedule: g3_day_schedule },
+            { time_slot: '10:30', description: '10:30, G3, 09-27-25', day_schedule: g3_day_schedule },
+            { time_slot: '11:00', description: '11:00, G3, 09-27-25', day_schedule: g3_day_schedule },
         
-            { time_slot: '08:30', description: '08:30, G2, 09-27-25', day_schedule: g4_day_schedule },
-            { time_slot: '09:00', description: '09:00, G2, 09-27-25', day_schedule: g4_day_schedule },
-            { time_slot: '09:30', description: '09:30, G2, 09-27-25', day_schedule: g4_day_schedule },
-            { time_slot: '10:00', description: '10:00, G2, 09-27-25', day_schedule: g4_day_schedule },
-            { time_slot: '10:30', description: '10:30, G2, 09-27-25', day_schedule: g4_day_schedule },
-            { time_slot: '11:00', description: '11:00, G2, 09-27-25', day_schedule: g4_day_schedule }
+            { time_slot: '08:30', description: '08:30, G4, 09-27-25', day_schedule: g4_day_schedule },
+            { time_slot: '09:00', description: '09:00, G4, 09-27-25', day_schedule: g4_day_schedule },
+            { time_slot: '09:30', description: '09:30, G4, 09-27-25', day_schedule: g4_day_schedule },
+            { time_slot: '10:00', description: '10:00, G4, 09-27-25', day_schedule: g4_day_schedule },
+            { time_slot: '10:30', description: '10:30, G4, 09-27-25', day_schedule: g4_day_schedule },
+            { time_slot: '11:00', description: '11:00, G4, 09-27-25', day_schedule: g4_day_schedule }
         ]
         
         Reservation.create(reservations)  
