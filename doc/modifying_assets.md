@@ -1,7 +1,6 @@
 # Modyfying Assets
 This system deployed with an initial set of Assets as defined in a migration named LoadProductionData. If this initial set of
-assests needs to be changed - whether that be by adding additioanal assets, deleting current assets or changeing their sort order
-- it is recommended that this be accomplished by using data migrations.
+assests needs to be changed, whether that be by adding additioanal assets, deleting current assets or changeing their sort order then it is recommended that this be accomplished by using data migrations.
 
 
 ## Adding an asset
