@@ -10,4 +10,6 @@ To add a new asset:
 'add_example_asset'.
 2. Run local integration and system tests (this will probably require running: `rails db:migrate RAILS_ENV=test` first)
 3. Push changes to GitHub
-
+4. Verify systenm tests pass on GitHub and Heroku C/I Server then create a new heroku staging server with thatthe same build.  
+5. Verify that the data migration ran and assets were updated appropriately on the staging server. Perform exploritoty testing.
+6. Promote the staging server slug to the production server. and verify the data migration has run.
