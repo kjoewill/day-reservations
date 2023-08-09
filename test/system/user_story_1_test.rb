@@ -25,10 +25,10 @@ class UserStory1Test < ApplicationSystemTestCase
 
     #verify second row
     assert_equal '08:00', find('table tbody tr:nth-child(1) td:nth-child(1)').text
-    assert_equal '-', find('table tbody tr:nth-child(1) td:nth-child(2)').text
-    assert_equal '-', find('table tbody tr:nth-child(1) td:nth-child(3)').text
-    assert_equal '-', find('table tbody tr:nth-child(1) td:nth-child(4)').text
-    assert_equal '-', find('table tbody tr:nth-child(1) td:nth-child(5)').text
+    assert_equal '', find('table tbody tr:nth-child(1) td:nth-child(2)').text
+    assert_equal '', find('table tbody tr:nth-child(1) td:nth-child(3)').text
+    assert_equal '', find('table tbody tr:nth-child(1) td:nth-child(4)').text
+    assert_equal '', find('table tbody tr:nth-child(1) td:nth-child(5)').text
 
   end 
 

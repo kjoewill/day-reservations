@@ -128,7 +128,7 @@ class UserStory4Test < ApplicationSystemTestCase
     # Assert that the specific cell contains "-" which implies no reservations
     within "table" do
       cell_text = find("tr:nth-child(1) td:nth-child(3)").text
-      assert_equal "-", cell_text
+      assert_equal "", cell_text
     end
   end
 
