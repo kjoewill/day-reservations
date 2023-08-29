@@ -26,7 +26,8 @@ table {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px; /* Adjust the height as needed */
+    height: 80px; /* Adjust the height as needed */
+    margin-bottom: 10px; /* Add margin to create whitespace below the header */
   }
   
   .header-text {
@@ -86,3 +87,69 @@ table {
     /* Adjust margin or padding as needed */
     margin-top: 5px;
   }
+
+ /* Comment Box Styles */
+ .comment-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: nowrap; /* Ensure contents don't wrap to a new line */
+  border: 1px solid #ced4da; /* Border */
+  padding: 5px; /* Padding */
+  background-color: #f7f7f7; /* Light background color */
+}
+
+.comment-field {
+  flex: 2; /* Let's increase this so it tries to take up more space than the button */
+  margin-right: 10px;
+}
+
+.comment-textarea {
+  align-self: center;
+  width: 100%;
+  height: 36px; /* Set this to the desired height */
+  padding: 4px 4px; /* Adjust padding for better visual */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  resize: none; /* Disable manual resize of textarea */
+  border-radius: 5px; /* Match the button's border radius */
+  font-size: inherit;
+  line-height: 1.4; /* Set a default line-height */
+  margin: 0; /* Reset margin */
+  overflow: auto; /* Helps in some cases where extra line appears */
+  font-family: inherit; /* This will make it inherit the font from its parent or the body */
+  border: 1px solid #ced4da; /* Add a border to visually match the button */
+  margin-top: 5px; /* Or whatever value needed to nudge it into the right place ... kind of kludgy */
+}
+
+.comment-label { 
+  margin-right: 10px;
+}
+
+.update-btn {
+  flex-shrink: 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  height: 35px; /* Set this to match the textarea's height */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: inherit;
+  /*padding: 10px 10px; /* Adjust padding for vertical spacing */
+  font-family: inherit; /* This will make it inherit the font from its parent or the body */
+  margin-right: 10px; /* Adjust this value as needed */
+  margin-left: 5px; /* Adjust this value as needed */
+}
+
+.update-btn:hover {
+  background-color: #0056b3;
+  line-height: 28px; /* or whatever value you've settled on */
+}
+
+.flex-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+

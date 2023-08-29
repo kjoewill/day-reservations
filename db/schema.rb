@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_133224) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_27_201255) do
   create_table "assets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -18,11 +18,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_133224) do
     t.integer "sort_order"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.date "day", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day"], name: "index_comments_on_day", unique: true
+  end
+
   create_table "day_schedules", force: :cascade do |t|
     t.date "day"
     t.integer "asset_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "comment"
     t.index ["asset_id"], name: "index_day_schedules_on_asset_id"
     t.index ["day", "asset_id"], name: "index_day_schedules_on_day_and_asset_id", unique: true
   end

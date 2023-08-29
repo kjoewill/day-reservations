@@ -1,5 +1,15 @@
-<h2>Reservations for <%= @selected_date.strftime('%m/%d/%Y') %></h2>
 
+<label for="comment[content]">Notes for the day:</label>
+<div class="comment-box">
+  <%= form_for @comment, html: { class: 'flex-form' } do |f| %>
+    <%= f.submit "Update", class: 'update-btn' %>
+    <div class="comment-field">
+      <%= f.text_area :content, rows: 1, class: 'comment-textarea' %>
+    </div>
+  <% end %>
+</div>
+
+<h2>Reservations for <%= @selected_date.strftime('%m/%d/%Y') %></h2>
 <div class="date-picker">
   <%= form_tag({ controller: 'home', action: 'index' }, method: 'get', id: 'date-form') do %>
     <%= label_tag :datepicker, 'Select a Date:' %>

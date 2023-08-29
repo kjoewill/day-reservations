@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :day_schedules, only: [] do
     resources :reservations, only: [:edit, :update], as: 'day_schedule_reservations', controller: 'day_schedules/reservations'
   end
+
+  resources :comments, only: [:update]
 end
