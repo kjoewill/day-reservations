@@ -13,4 +13,4 @@ have the flexibility to continue working as the assets under management change.
 
 5. As a user I want to access the application for various browsers on various platforms such as mobile devices so that I not limited to a particular platform or browser.
 
-6. As  user I want to add a comment to the home page that applies to the day displayed so that other users can make use of this information.
+6. As  user I want to add a comment to the home page that applies to the day displayed so that other users can view this information.
