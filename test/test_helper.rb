@@ -30,10 +30,11 @@ class ActiveSupport::TestCase
   end
 
   Capybara.javascript_driver = :chrome
-  # if ENV['GOOGLE_CHROME_SHIM']
-  #   Selenium::WebDriver::Chrome.path = ENV['GOOGLE_CHROME_SHIM']
-  # end
-  
+   if ENV['GOOGLE_CHROME_SHIM']
+     #Selenium::WebDriver::Chrome.path = ENV['GOOGLE_CHROME_SHIM']
+     Selenium::WebDriver::Chrome.path = "/usr/bin/chromium"
+   end
+
   # End chrome lib path setup
 
   # Configure DatabaseCleaner
