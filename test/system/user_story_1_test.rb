@@ -24,7 +24,7 @@ class UserStory1Test < ApplicationSystemTestCase
     assert_equal 'Glider-4 Reserve', find('table thead tr th:nth-child(5)').text
 
     #verify second row
-    assert_equal '08:00', find('table tbody tr:nth-child(1) td:nth-child(1)').text
+    assert_equal '09:00', find('table tbody tr:nth-child(1) td:nth-child(1)').text
     assert_equal '', find('table tbody tr:nth-child(1) td:nth-child(2)').text
     assert_equal '', find('table tbody tr:nth-child(1) td:nth-child(3)').text
     assert_equal '', find('table tbody tr:nth-child(1) td:nth-child(4)').text

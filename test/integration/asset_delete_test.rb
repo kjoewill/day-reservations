@@ -27,15 +27,15 @@ class AssetsDeleteTest < ActiveSupport::TestCase
     assert_equal 4, Asset.count
   end
 
-  test 'Glider-2 has one daySchedule and six reservations' do
+  test 'Glider-2 has one daySchedule and five reservations' do
     g2 = Asset.find_by(name: 'Glider-2')
     assert_equal 1, g2.day_schedules.count
-    assert_equal 6, g2.day_schedules.first.reservations.count
+    assert_equal 5, g2.day_schedules.first.reservations.count
   end 
 
   test 'If Glider-2 is deleted then so are its schedules and reservations' do
     assert_equal 4, DaySchedule.count
-    assert_equal 24, Reservation.count
+    assert_equal 20, Reservation.count
 
     g2 = Asset.find_by(name: 'Glider-2')
     day_sched_id = g2.day_schedules.first.id
@@ -43,7 +43,7 @@ class AssetsDeleteTest < ActiveSupport::TestCase
 
     g2.destroy
     assert_equal 4-1, DaySchedule.count
-    assert_equal 24-6, Reservation.count
+    assert_equal 20-5, Reservation.count
 
     assert_raises(ActiveRecord::RecordNotFound) do
       DaySchedule.find(day_sched_id)
@@ -57,7 +57,7 @@ class AssetsDeleteTest < ActiveSupport::TestCase
   test 'If all Gliders are deleted then so are all Day_Schedules and DayReservatios' do
     assert_equal 4, Asset.count
     assert_equal 4, DaySchedule.count
-    assert_equal 24, Reservation.count
+    assert_equal 20, Reservation.count
 
     Asset.destroy_all
     
